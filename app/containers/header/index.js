@@ -49,7 +49,7 @@ export default class Header extends Component {
           <HeadButton text='Best' link='/best' />
         </div>
         <div style={style.middle}>HN React</div>
-        <div style={style.right}>ashall &#x25be;</div>
+        <div style={style.right}><i style={{fontSize: '20px'}} className="material-icons">refresh</i></div>
       </div>
     )
   }
