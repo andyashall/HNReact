@@ -1,0 +1,7 @@
+.heading {
+  color: #333;
+}
+
+.heading:hover {
+  color: #888;
+}
