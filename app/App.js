@@ -4,8 +4,6 @@ import { Route } from 'react-router'
 import Header from './containers/header'
 import Home from './containers/home'
 import About from './containers/about'
-import New from './containers/new'
-import Best from './containers/best'
 import Comments from './containers/comments'
 
 export default class App extends React.Component {

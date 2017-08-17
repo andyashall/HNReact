@@ -22,17 +22,14 @@ const style = {
     fontSize: '.8rem'
   },
   more: {
-    padding: '2rem',
-    color: '#888',
-    textAlign: 'center',
-    cursor: 'pointer'
+    display: 'none'
   },
   moreHov: {
     padding: '2rem',
     color: '#888',
     textAlign: 'center',
     cursor: 'pointer',
-    backgroundColor: '#f9f9f9'
+    // backgroundColor: '#f9f9f9'
   }
 }
 
@@ -67,7 +64,7 @@ export default class Home extends Component {
                     {p.kids.slice(0,this.state.limit).map((post, i) => {
                       return <Comment key={post} pid={post} i={i+1} />
                     })}
-                    <div onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}} onClick={()=>{this.setState({limit: this.state.limit+10})}} style={this.state.hov ? style.moreHov : style.more}>Load more</div>
+                    <div onClick={()=>{this.setState({limit: this.state.limit+10})}} style={p.kids.length > this.state.limit ? style.moreHov : style.more}>Load more</div>
                   </span>
       if (p.url) {
         title = <div style={style.title}><a href={p.url}>{this.state.post.title}</a></div>

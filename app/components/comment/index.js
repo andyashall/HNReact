@@ -24,19 +24,14 @@ const style = {
     display: 'none'
   },
   more: {
-    padding: '1rem',
-    color: '#888',
-    textAlign: 'center',
-    cursor: 'pointer',
-    fontSize: '.8rem',
-    borderBottom: '1px solid rgba(0,0,0,.05)'
+    display: 'none'
   },
   moreHov: {
     padding: '1rem',
     color: '#888',
     textAlign: 'center',
     cursor: 'pointer',
-    backgroundColor: '#f9f9f9',
+    // backgroundColor: '#f9f9f9',
     fontSize: '.8rem',
     borderBottom: '1px solid rgba(0,0,0,.05)'
   }
@@ -64,7 +59,7 @@ export default class Home extends Component {
         kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.slice(0,this.state.limit).map((po, i) => {
             return <Comment2 key={po} pid={po} i={i+1} />
           })}
-        <div onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}} onClick={()=>{this.setState({limit: this.state.limit+3})}} style={this.state.hov ? style.moreHov : style.more}>Load more</div></span>
+        <div onClick={()=>{this.setState({limit: this.state.limit+3})}} style={p.kids.length > this.state.limit ? style.moreHov : style.more}>Load more</div></span>
       }
       post = <span><div style={style.post} onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}}>
               <div style={{padding:'1rem'}}>
