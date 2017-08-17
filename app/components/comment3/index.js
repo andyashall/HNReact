@@ -20,13 +20,10 @@ const style = {
   postHov: {padding: '1rem', backgroundColor: '#f9f9f9'},
   hideChildren: {
     cursor: 'pointer'
+  },
+  hide: {
+    display: 'none'
   }
-}
-
-const url_domain = (data) => {
-  let    a      = document.createElement('a');
-         a.href = data;
-  return a.hostname.replace('www.', '');
 }
 
 export default class Home extends Component {
@@ -56,8 +53,8 @@ export default class Home extends Component {
       // }
       post = <div style={style.post} onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}}>
               <div style={{padding:'1rem'}}>
-                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span style={style.hideChildren}>[-]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
-                <div dangerouslySetInnerHTML={{__html: p.text}}></div>
+                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
+                <div style={this.state.hide ? style.hide : style.show} dangerouslySetInnerHTML={{__html: p.text}}></div>
               </div>
             </div>
     }

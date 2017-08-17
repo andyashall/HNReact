@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import store from '../../store'
 const state = store.getState()
 
-import { savePosts } from '../../actions'
+import { savePosts, setLimit, postsType } from '../../actions'
 
 import Post from '../../components/post'
 
@@ -42,14 +42,15 @@ class Home extends Component {
     this.state = {limit: 30}
   }
   componentDidMount() {
-    if (this.props.posts.length >= 1) {
+    if (this.props.posts.length >= 1 && this.props.postsType == this.props.type) {
       this.setState({fetched: true})
       console.log('gotem')
     } else {
       console.log('fetching')
-      axios.get('https://hacker-news.firebaseio.com/v0/topstories.json')
+      axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.type}.json`)
       .then((res) => {
         store.dispatch(savePosts(res.data))
+        store.dispatch(postsType(this.props.type))
         this.setState({fetched: true})
       })
       .catch((err) => {console.log(err)})
@@ -59,10 +60,10 @@ class Home extends Component {
     let posts = <div style={{textAlign: 'center', paddingTop: '1rem'}}>Loading...</div>
     if (this.state.fetched) {
       posts = <span>
-                {this.props.posts.slice(0,this.state.limit).map((post, i) => {
+                {this.props.posts.slice(0,this.props.limit).map((post, i) => {
                   return <Post key={post} pid={post} i={i+1} />
                 })}
-                <div onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}} onClick={()=>{this.setState({limit: this.state.limit+30})}} style={this.state.hov ? style.moreHov : style.more}>Load more</div>
+                <div onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}} onClick={()=>{store.dispatch(setLimit(this.props.limit+30))}} style={this.state.hov ? style.moreHov : style.more}>Load more</div>
               </span>
     }
     return(
@@ -75,7 +76,9 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.posts
+    posts: state.posts,
+    postsType: state.postsType,
+    limit: state.limit
   }
 }
 

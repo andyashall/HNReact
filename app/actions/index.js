@@ -5,15 +5,23 @@ export const savePosts = (data) => {
   }
 }
 
-export const removePosts = () => {
+export const postsType = (data) => {
   return {
-    type: 'REMOVE_POSTS'
+    type: 'POSTS_TYPE',
+    data
   }
 }
 
 export const savePost = (data) => {
   return {
     type: 'SAVE_POST',
+    data
+  }
+}
+
+export const setLimit = (data) => {
+  return {
+    type: 'SET_LIMIT',
     data
   }
 }

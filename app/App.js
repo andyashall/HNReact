@@ -17,9 +17,9 @@ export default class App extends React.Component {
     return (
       <div>
         <Header />
-        <Route exact path="/" component={Home} />
-        <Route path="/new" component={New} />
-        <Route path="/best" component={Best} />
+        <Route exact path="/" render={()=><Home type="topstories" />} />
+        <Route path="/new" render={()=><Home type="newstories" />} />
+        <Route path="/best" render={()=><Home type="beststories" />} />
         <Route path="/about" component={About} />
         <Route path="/p/:id" component={Comments} />
       </div>

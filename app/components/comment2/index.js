@@ -28,7 +28,7 @@ const style = {
 export default class Home extends Component {
   constructor(props) {
     super(props)
-    this.state = {a: 1}
+    this.state = {limit: 3}
   }
   componentDidMount() {
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.props.pid}.json`)
@@ -44,13 +44,13 @@ export default class Home extends Component {
     if (this.state.fetched) {
       let p = this.state.post
       if (p.kids) {
-        kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.map((po, i) => {
+        kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.slice(0,this.state.limit).map((po, i) => {
             return <Comment3 key={po} pid={po} i={i+1} />
           })}</span>
       }
       post = <span><div style={style.post} onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}}>
               <div style={{padding:'1rem'}}>
-                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? '+' : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
+                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
                 <div style={this.state.hide ? style.hide : style.show} dangerouslySetInnerHTML={{__html: p.text}}></div>
               </div>
             </div>
