@@ -5,7 +5,8 @@ import ta from 'time-ago'
 
 import PostLoad from '../postLoad'
 
-import css from './style.css'
+
+// import css from './style.css'
 
 const style = {
   container: {
@@ -14,8 +15,11 @@ const style = {
   },
   link: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem'},
   linkHov: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem', textDecoration: 'underline'},
-  post: {padding: '1rem'},
-  postHov: {padding: '1rem', backgroundColor: '#f9f9f9'}
+  post: {padding: '1rem', fontSize: '.9rem'},
+  postHov: {padding: '1rem', backgroundColor: '#f9f9f9'},
+  hideChildren: {
+    cursor: 'pointer'
+  }
 }
 
 const url_domain = (data) => {
@@ -38,24 +42,21 @@ export default class Home extends Component {
     return ta().ago(t)
   }
   render () {
-    let post = <PostLoad />
+    let post = <PostLoad />,
+        kids = ''
     if (this.state.fetched) {
       let p = this.state.post
-      let title = ''
-      if (p.url) {
-        title = <div><a href={p.url}>{this.state.post.title}</a></div>
-      } else {
-        title = <div><Link to={`/p/${p.id}`}>{this.state.post.title}</Link></div>
-      }
-      post =  
+      post =
             <div style={style.post} onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}}>
-              <div style={{color: '#888', width: '2rem', marginRight: '10px', textAlign: 'right', display: 'inline-block', verticalAlign: 'top'}}>{this.props.i}.</div>
-              <div style={{display: 'inline-block'}}>
-                {title}
-                <div style={style.link}>{url_domain(p.url)}</div>
-                <div className={css.info} style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <a href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)} | <Link to={`/p/${p.id}`}>{p.descendants} comments</Link></div>
+              <div>
+                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span style={style.hideChildren}>[-]</span> <a href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
+                <div dangerouslySetInnerHTML={{__html: p.text}}></div>
               </div>
+              {kids}
             </div>
+      if (p.kids) {
+        return <div>Show more</div>
+      }
     }
     return(
       <div style={style.container}>

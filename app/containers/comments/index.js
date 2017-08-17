@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ta from 'time-ago'
 
-import Post from '../../components/post'
-
-import css from './style.css'
+import Comment from '../../components/comment'
 
 const style = {
   container: {
@@ -35,25 +33,32 @@ export default class Home extends Component {
   componentDidMount() {
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.props.location.pathname.replace('/p/', '')}.json`)
     .then((res) => {
-      console.log(res)
-     this.setState({post: res.data, fetched: true}) })
+      this.setState({post: res.data, fetched: true})
+    })
     .catch((err) => {console.log(err)})
   }
   getTime(t) {
     return ta().ago(t)
   }
   render () {
-    let p = {title: 'doot'}
+    let p = {title: 'doot'},
+        comments = <div style={{textAlign: 'center', padding: '2rem'}}>Loading...</div>
     if (this.state.fetched) {
       p = this.state.post
+      comments = <span>
+                    {p.kids.map((post, i) => {
+                      return <Comment key={post} pid={post} i={i+1} />
+                    })}
+                  </span>
     }
     return(
       <div style={style.container}>
         <div style={{padding: '1rem', borderBottom: '1px solid rgba(0,0,0,.05)'}}>
-          <div style={style.title}>{p.title}</div>
+          <div style={style.title}><a href={p.url}>{p.title}</a></div>
           <div style={style.link}>{url_domain(p.url)}</div>
-          <div className={css.info} style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <a href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
+          <div style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <a href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
         </div>
+        {comments}
       </div>
     )
   }

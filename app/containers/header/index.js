@@ -27,11 +27,13 @@ const style = {
     left: '50%'
   },
   right: {
-    color: '#333',
+    // display: 'none',
+    // color: '#333',
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    right: '20px'
+    right: '20px',
+    fontFamily: 'FontAwesome'
   }
 }
 
@@ -49,7 +51,7 @@ export default class Header extends Component {
           <HeadButton text='Best' link='/best' />
         </div>
         <div style={style.middle}>HN React</div>
-        <div style={style.right}><i style={{fontSize: '20px'}} className="material-icons">refresh</i></div>
+        <div style={style.right}><a style={{textDecoration: 'none'}} href='https://github.com/andyashall/HNReact'>&#xf09b;</a></div>
       </div>
     )
   }
