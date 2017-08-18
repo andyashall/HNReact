@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import ta from 'time-ago'
 
+import Post from '../../components/post'
+
 const style = {
   container: {
     backgroundColor: '#fff',
@@ -28,6 +30,20 @@ const style = {
     textAlign: 'center',
     cursor: 'pointer',
     // backgroundColor: '#f9f9f9'
+  },
+  table: {
+    display: 'table',
+    padding: '1rem',
+    // width: '100%'
+  },
+  cell: {
+    display: 'table-cell',
+    padding: '1rem'
+  },
+  cellg: {
+    display: 'table-cell',
+    padding: '1rem',
+    color: '#888'
   }
 }
 
@@ -37,10 +53,10 @@ export default class Home extends Component {
     this.state = {limit: 10}
   }
   componentDidMount() {
-    axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.location.pathname.replace('/p/', '')}.json`)
+    axios.get(`https://hacker-news.firebaseio.com/v0/user/${this.props.location.pathname.replace('/u/', '')}.json`)
     .then((res) => {
       console.log(res.data)
-      this.setState({post: res.data, fetched: true})
+      this.setState({user: res.data, fetched: true})
     })
     .catch((err) => {console.log(err)})
   }
@@ -53,26 +69,40 @@ export default class Home extends Component {
     return a.hostname.replace('www.', '')
   }
   render () {
-    let p = {title: 'doot'},
+    let u = {id: 'Loading...', created: 'Loading...', karma: 'Loading...', about: 'Loading...'},
         comments = <div style={{textAlign: 'center', padding: '2rem'}}>Loading...</div>,
-        title = <div></div>
+        title = <div></div>,
+        posts = <div style={{textAlign: 'center', paddingTop: '1rem'}}>Loading...</div>
     if (this.state.fetched) {
-      p = this.state.post
-      comments = <span>
-                    {p.kids.slice(0,this.state.limit).map((post, i) => {
-                      return <Comment key={post} pid={post} i={i+1} />
-                    })}
-                    <div onClick={()=>{this.setState({limit: this.state.limit+10})}} style={p.kids.length > this.state.limit ? style.moreHov : style.more}>Load more</div>
-                  </span>
-      if (p.url) {
-        title = <div style={style.title}><a href={p.url}>{this.state.post.title}</a></div>
-      } else {
-        title = <div style={style.title}><Link to={`/p/${p.id}`}>{this.state.post.title}</Link></div>
+      u = this.state.user
+      if (u.submitted) {
+      posts = <span>
+                {u.submitted.slice(0,this.state.limit).map((post, i) => {
+                  return <Post key={post} pid={post} i={i+1} />
+                })}
+                <div onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}} onClick={()=>{store.dispatch(setLimit(this.props.limit+30))}} style={this.state.hov ? style.moreHov : style.more}>Load more</div>
+              </span>
       }
     }
     return(
       <div style={style.container}>
-
+        <div style={{borderBottom: '1px solid rgba(0,0,0,.05)'}}>
+          <div style={style.table}>
+            <div style={{display: 'table-row'}}>
+              <div style={style.cellg}>User:</div><div style={style.cell}>{u.id}</div>
+            </div>
+            <div style={{display: 'table-row'}}>
+              <div style={style.cellg}>Created:</div><div style={style.cell}>{this.getTime(u.created*1000)}</div>
+            </div>
+            <div style={{display: 'table-row'}}>
+              <div style={style.cellg}>Karma:</div><div style={style.cell}>{u.karma}</div>
+            </div>
+            <div style={{display: 'table-row'}}>
+              <div style={style.cellg}>About:</div><div dangerouslySetInnerHTML={{__html: u.about}} style={style.cell}/>
+            </div>
+          </div>
+        </div>
+        {posts}
       </div>
     )
   }

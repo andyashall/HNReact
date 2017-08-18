@@ -57,7 +57,7 @@ class Home extends Component {
     }
   }
   render () {
-    let posts = <div style={{textAlign: 'center', paddingTop: '1rem'}}>Loading...</div>
+    let posts = <div style={{textAlign: 'center', paddingTop: '1rem', color: '#888'}}>Loading...</div>
     if (this.state.fetched) {
       posts = <span>
                 {this.props.posts.slice(0,this.props.limit).map((post, i) => {

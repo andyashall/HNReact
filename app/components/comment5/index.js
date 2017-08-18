@@ -5,7 +5,7 @@ import ta from 'time-ago'
 
 import PostLoad from '../postLoad'
 
-import Comment5 from '../comment5'
+// import Comment5 from '../comment5'
 
 // import css from './style.css'
 
@@ -15,7 +15,7 @@ const style = {
   },
   link: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem'},
   linkHov: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem', textDecoration: 'underline'},
-  post: {backgroundColor: '#fff', fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1px solid rgba(0,0,0,.05)', marginLeft: '3rem'},
+  post: {backgroundColor: '#fff', fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1px solid rgba(0,0,0,.05)', marginLeft: '4rem'},
   postHov: {padding: '1rem', backgroundColor: '#f9f9f9'},
   hideChildren: {
     cursor: 'pointer'
@@ -43,11 +43,11 @@ export default class Home extends Component {
         kids = ''
     if (this.state.fetched) {
       let p = this.state.post
-      if (p.kids) {
-        kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.slice(0,this.state.limit).map((po, i) => {
-            return <Comment5 key={po} pid={po} i={i+1} />
-          })}</span>
-      }
+      // if (p.kids) {
+      //   kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.slice(0,this.state.limit).map((po, i) => {
+      //       return <Comment4 key={po} pid={po} i={i+1} />
+      //     })}</span>
+      // }
       post = <span><div style={p.deleted ? style.hide : style.post}>
               <div style={{padding:'1rem'}}>
                 <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>

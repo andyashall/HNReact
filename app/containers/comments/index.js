@@ -57,7 +57,7 @@ export default class Home extends Component {
   }
   render () {
     let p = {title: 'doot'},
-        comments = <div style={{textAlign: 'center', padding: '2rem'}}>Loading...</div>,
+        comments = <div style={{textAlign: 'center', padding: '2rem', color: '#888'}}>Loading...</div>,
         title = <div></div>
     if (this.state.fetched) {
       p = this.state.post
