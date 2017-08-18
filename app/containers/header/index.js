@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import HeadButton from '../../components/headButton'
 
+import css from './style.css'
+
 const style = {
   container: {
     position: 'fixed',
@@ -33,7 +35,7 @@ const style = {
     top: '50%',
     transform: 'translateY(-50%)',
     right: '20px',
-    fontFamily: 'FontAwesome'
+    fontSize: '1rem'
   }
 }
 
@@ -51,7 +53,7 @@ export default class Header extends Component {
           <HeadButton text='Best' link='/best' />
         </div>
         <div style={style.middle}>HN React</div>
-        <div style={style.right}><a style={{textDecoration: 'none'}} href='https://github.com/andyashall/HNReact'>&#xf09b;</a></div>
+        <div style={style.right}><a className={css.icon} href='https://github.com/andyashall/HNReact'>&#xf09b;</a></div>
       </div>
     )
   }

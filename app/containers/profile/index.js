@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ta from 'time-ago'
-import {Link} from 'react-router-dom'
-
-import Comment from '../../components/comment'
 
 const style = {
   container: {
-    backgroundColor: '#f9f9f9',
+    backgroundColor: '#fff',
     minHeight: 'calc(100vh - 2.75rem)',
     position: 'relative',
     marginTop: '2.75rem',
@@ -26,11 +23,11 @@ const style = {
     display: 'none'
   },
   moreHov: {
-    padding: '1rem',
+    padding: '2rem',
     color: '#888',
     textAlign: 'center',
     cursor: 'pointer',
-    backgroundColor: '#fff'
+    // backgroundColor: '#f9f9f9'
   }
 }
 
@@ -40,7 +37,7 @@ export default class Home extends Component {
     this.state = {limit: 10}
   }
   componentDidMount() {
-    axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.props.location.pathname.replace('/p/', '')}.json`)
+    axios.get(`https://hacker-news.firebaseio.com/v0/${this.props.location.pathname.replace('/p/', '')}.json`)
     .then((res) => {
       console.log(res.data)
       this.setState({post: res.data, fetched: true})
@@ -75,12 +72,7 @@ export default class Home extends Component {
     }
     return(
       <div style={style.container}>
-        <div style={{padding: '1rem', borderBottom: '1px solid rgba(0,0,0,.05)', backgroundColor: '#fff'}}>
-          {title}
-          <div style={style.link}>{this.url_domain(p.url)}</div>
-          <div style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <Link to={`/u/${p.by}`}>{p.by}</Link> {this.getTime(p.time*1000)}</div>
-        </div>
-        {comments}
+
       </div>
     )
   }

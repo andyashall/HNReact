@@ -5,6 +5,7 @@ import Header from './containers/header'
 import Home from './containers/home'
 import About from './containers/about'
 import Comments from './containers/comments'
+import Profile from './containers/profile'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ export default class App extends React.Component {
         <Route path="/best" render={()=><Home type="beststories" />} />
         <Route path="/about" component={About} />
         <Route path="/p/:id" component={Comments} />
+        <Route path="/u/:id" component={Profile} />
       </div>
     )
   }

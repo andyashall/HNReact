@@ -22,13 +22,13 @@ const style = {
     borderRight: '1px solid rgba(0,0,0,.05)'
   },
   more: {
-    padding: '2rem',
+    padding: '1rem',
     color: '#888',
     textAlign: 'center',
     cursor: 'pointer'
   },
   moreHov: {
-    padding: '2rem',
+    padding: '1rem',
     color: '#888',
     textAlign: 'center',
     cursor: 'pointer',

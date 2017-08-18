@@ -53,7 +53,7 @@ export default class Home extends Component {
               <div style={{display: 'inline-block'}}>
                 {title}
                 <div style={style.link}>{url_domain(p.url)}</div>
-                <div className={css.info} style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <a href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)} | <Link to={`/p/${p.id}`}>{p.descendants} comments</Link></div>
+                <div className={css.info} style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <Link to={`/u/${p.by}`}>{p.by}</Link> {this.getTime(p.time*1000)} | <Link to={`/p/${p.id}`}>{p.descendants} comments</Link></div>
               </div>
             </div>
     }

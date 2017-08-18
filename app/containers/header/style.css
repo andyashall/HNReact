@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'fa';
+  src: url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2);
+}
+
+.icon {
+  font-family: 'fa';
+}
+
+.icon:visited {
+  color: #333;
+}
+
+.icon:hover {
+  text-decoration: none;
+  color: rgba(65,65,65,.65);
+}

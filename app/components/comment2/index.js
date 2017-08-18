@@ -15,7 +15,7 @@ const style = {
   },
   link: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem'},
   linkHov: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem', textDecoration: 'underline'},
-  post: {fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1rem solid #f9f9f9'},
+  post: {backgroundColor: '#fff', fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1px solid rgba(0,0,0,.05)', marginLeft: '1rem'},
   postHov: {padding: '1rem', backgroundColor: '#f9f9f9'},
   hideChildren: {
     cursor: 'pointer'
@@ -48,7 +48,7 @@ export default class Home extends Component {
             return <Comment3 key={po} pid={po} i={i+1} />
           })}</span>
       }
-      post = <span><div style={style.post} onMouseEnter={()=>{this.setState({hov:true})}} onMouseLeave={()=>{this.setState({hov:false})}}>
+      post = <span><div style={p.deleted ? style.hide : style.post}>
               <div style={{padding:'1rem'}}>
                 <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
                 <div style={this.state.hide ? style.hide : style.show} dangerouslySetInnerHTML={{__html: p.text}}></div>
