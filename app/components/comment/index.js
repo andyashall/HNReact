@@ -63,7 +63,7 @@ export default class Home extends Component {
       }
       post = <span><div style={p.deleted ? style.hide : style.post}>
               <div style={{padding:'1rem'}}>
-                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <a style={{color: 'inherit'}} href={`https://news.ycombinator.com/user?id=${p.by}`}>{p.by}</a> {this.getTime(p.time*1000)}</div>
+                <div style={{color: '#888', fontSize: '.8rem', marginBottom: '10px'}}><span onClick={()=>{this.setState({hide: this.state.hide ? false : true})}} style={style.hideChildren}>[{this.state.hide ? `+${p.kids ? p.kids.length : '0'}` : '-'}]</span> <Link style={{color: 'inherit'}} to={`/u/${p.by}`}>{p.by}</Link> {this.getTime(p.time*1000)}</div>
                 <div style={this.state.hide ? style.hide : style.show} dangerouslySetInnerHTML={{__html: p.text}}></div>
               </div>
             </div>

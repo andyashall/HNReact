@@ -85,7 +85,7 @@ export default class Home extends Component {
       }
     }
     return(
-      <div clssName={css.cont} style={style.container}>
+      <div className={css.cont} style={style.container}>
         <div style={{borderBottom: '1px solid rgba(0,0,0,.05)'}}>
           <div className={css.table} style={style.table}>
             <div style={{display: 'table-row'}}>
