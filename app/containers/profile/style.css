@@ -1,0 +1,21 @@
+.cont {
+  width: 800px;
+  border-left: 1px solid rgba(0,0,0,.05);
+  border-right: 1px solid rgba(0,0,0,.05);
+}
+
+.table {
+  padding: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+  .cont {
+    width: 100%;
+    overflow: hidden;
+    border-left: none;
+    border-right: none;
+  }
+  .table {
+    padding: 0;
+  }
+}

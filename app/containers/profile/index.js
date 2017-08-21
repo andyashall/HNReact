@@ -4,6 +4,8 @@ import ta from 'time-ago'
 
 import Post from '../../components/post'
 
+import css from './style.css'
+
 const style = {
   container: {
     backgroundColor: '#fff',
@@ -11,10 +13,8 @@ const style = {
     position: 'relative',
     marginTop: '2.75rem',
     left: '50%',
-    width: '800px',
-    transform: 'translateX(-50%)',
-    borderLeft: '1px solid rgba(0,0,0,.05)',
-    borderRight: '1px solid rgba(0,0,0,.05)'
+    // width: '800px',
+    transform: 'translateX(-50%)'
   },
   link: {
     color: '#0070c9',
@@ -33,7 +33,7 @@ const style = {
   },
   table: {
     display: 'table',
-    padding: '1rem',
+    // padding: '1rem',
     // width: '100%'
   },
   cell: {
@@ -85,9 +85,9 @@ export default class Home extends Component {
       }
     }
     return(
-      <div style={style.container}>
+      <div clssName={css.cont} style={style.container}>
         <div style={{borderBottom: '1px solid rgba(0,0,0,.05)'}}>
-          <div style={style.table}>
+          <div className={css.table} style={style.table}>
             <div style={{display: 'table-row'}}>
               <div style={style.cellg}>User:</div><div style={style.cell}>{u.id}</div>
             </div>

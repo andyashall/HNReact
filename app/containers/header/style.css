@@ -26,11 +26,47 @@
   cursor: pointer;
 }
 
+.mMenu {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .webMenu {
     display: none;
   }
   .mobMenu {
     display: block;
+  }
+  .mMenu {
+    display: block;
+  }
+  .menu {
+    position: fixed;
+    z-index: 60;
+    top: 2.75rem;
+    height: calc(100vh - 2.75rem);
+    width: 250px;
+    color: #333;
+    background-color: #fff;
+    border-right: 1px solid rgba(0,0,0,.06);
+    transition: .2s ease transform;
+  }
+  .menu a {
+    color: inherit;
+  }
+  .menu.hide {
+    transform: translateX(-100%);
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 50;
+    background-color: rgba(0,0,0,.65);
+  }
+  .overlay.hide {
+    display: none;
   }
 }
