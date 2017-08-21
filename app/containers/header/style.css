@@ -15,3 +15,22 @@
   text-decoration: none;
   color: rgba(65,65,65,.65);
 }
+
+.mobMenu {
+  display: none;
+  color: #333;
+}
+
+.mobMenu:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+  .webMenu {
+    display: none;
+  }
+  .mobMenu {
+    display: block;
+  }
+}

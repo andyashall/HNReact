@@ -5,6 +5,8 @@ import {Link} from 'react-router-dom'
 
 import Comment from '../../components/comment'
 
+import css from './style.css'
+
 const style = {
   container: {
     backgroundColor: '#f9f9f9',
@@ -12,10 +14,8 @@ const style = {
     position: 'relative',
     marginTop: '2.75rem',
     left: '50%',
-    width: '800px',
-    transform: 'translateX(-50%)',
-    borderLeft: '1px solid rgba(0,0,0,.05)',
-    borderRight: '1px solid rgba(0,0,0,.05)'
+    // width: '800px',
+    transform: 'translateX(-50%)'
   },
   link: {
     color: '#0070c9',
@@ -74,7 +74,7 @@ export default class Home extends Component {
       }
     }
     return(
-      <div style={style.container}>
+      <div className={css.cont} style={style.container}>
         <div style={{padding: '1rem', borderBottom: '1px solid rgba(0,0,0,.05)', backgroundColor: '#fff'}}>
           {title}
           <div style={style.link}>{this.url_domain(p.url)}</div>

@@ -5,6 +5,8 @@ import {connect} from 'react-redux'
 import store from '../../store'
 const state = store.getState()
 
+import css from './style.css'
+
 import { savePosts, setLimit, postsType } from '../../actions'
 
 import Post from '../../components/post'
@@ -16,10 +18,7 @@ const style = {
     position: 'relative',
     marginTop: '2.75rem',
     left: '50%',
-    width: '800px',
-    transform: 'translateX(-50%)',
-    borderLeft: '1px solid rgba(0,0,0,.05)',
-    borderRight: '1px solid rgba(0,0,0,.05)'
+    transform: 'translateX(-50%)'
   },
   more: {
     padding: '1rem',
@@ -67,7 +66,7 @@ class Home extends Component {
               </span>
     }
     return(
-      <div style={style.container}>
+      <div className={css.cont} style={style.container}>
         {posts}
       </div>
     )

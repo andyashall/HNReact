@@ -10,3 +10,13 @@ a:hover {
 a:visited {
   color: #888;
 }
+
+.num {
+  display: inline-block;
+}
+
+@media screen and (max-width: 800px) {
+  .num {
+    display: none;
+  }
+}

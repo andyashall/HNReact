@@ -20,7 +20,7 @@ const style = {
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    left: '20px'
+    left: '1rem'
   },
   middle: {
     position: 'absolute',
@@ -34,7 +34,7 @@ const style = {
     position: 'absolute',
     top: '50%',
     transform: 'translateY(-50%)',
-    right: '20px',
+    right: '1rem',
     fontSize: '1rem'
   }
 }
@@ -47,10 +47,13 @@ export default class Header extends Component {
   render () {
     return(
       <div style={style.container}>
-        <div style={style.left}>
-          <HeadButton text='Home' link='/' />
-          <HeadButton text='New' link='/new' />
-          <HeadButton text='Best' link='/best' />
+        <div className={css.left} style={style.left}>
+          <div className={css.webMenu}>
+            <HeadButton text='Home' link='/' />
+            <HeadButton text='New' link='/new' />
+            <HeadButton text='Best' link='/best' />
+          </div>
+          <div className={css.mobMenu}><i style={{verticalAlign: 'middle'}} className="material-icons">menu</i></div>
         </div>
         <div style={style.middle}>HN React</div>
         <div style={style.right}><a className={css.icon} href='https://github.com/andyashall/HNReact'>&#xf09b;</a></div>

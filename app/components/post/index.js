@@ -54,11 +54,11 @@ export default class Home extends Component {
       }
       post =  
             <div style={style.post}>
-              <div style={{color: '#888', width: '2rem', marginRight: '10px', textAlign: 'right', display: 'inline-block', verticalAlign: 'top'}}>{this.props.i}.</div>
+              <div className={css.num} style={{color: '#888', width: '2rem', marginRight: '10px', textAlign: 'right', verticalAlign: 'top'}}>{this.props.i}.</div>
               <div style={{display: 'inline-block'}}>
                 {title}
                 <div style={style.link}>{url_domain(p.url)}</div>
-                <div className={css.info} style={{color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <Link to={`/u/${p.by}`}>{p.by}</Link> {this.getTime(p.time*1000)} | <Link to={`/p/${p.id}`}>{p.descendants} comments</Link></div>
+                <div className={css.info} style={{lineHeight: '1.3', color: '#888', fontSize: '.8rem', marginTop: '5px'}}>{p.score} points by <Link to={`/u/${p.by}`}>{p.by}</Link> {this.getTime(p.time*1000)} | <Link to={`/p/${p.id}`}>{p.descendants} comments</Link></div>
               </div>
             </div>
     }
