@@ -42,7 +42,6 @@ export default class Home extends Component {
   componentDidMount() {
     axios.get(`https://hacker-news.firebaseio.com/v0/item/${this.props.location.pathname.replace('/p/', '')}.json`)
     .then((res) => {
-      console.log(res.data)
       this.setState({post: res.data, fetched: true})
     })
     .catch((err) => {console.log(err)})

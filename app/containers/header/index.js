@@ -64,7 +64,7 @@ export default class Header extends Component {
             </div>
             <div onClick={this.toggle} className={css.mobMenu}><i style={{verticalAlign: 'middle'}} className="material-icons">menu</i></div>
           </div>
-          <div style={style.middle}>HN React</div>
+          <div style={style.middle}>HN</div>
           <div style={style.right}><a className={css.icon} href='https://github.com/andyashall/HNReact'>&#xf09b;</a></div>
         </div>
         <div className={css.mMenu}>

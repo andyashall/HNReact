@@ -15,6 +15,10 @@ a:visited {
   display: inline-block;
 }
 
+.comments {
+  display: none;
+}
+
 @media screen and (max-width: 800px) {
   .num {
     display: none;

@@ -5,7 +5,7 @@ import ta from 'time-ago'
 
 import PostLoad from '../postLoad'
 
-import Comment7 from '../comment7'
+import Comment10 from '../comment10'
 
 // import css from './style.css'
 
@@ -15,7 +15,7 @@ const style = {
   },
   link: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem'},
   linkHov: {color: '#0070c9', marginTop: '5px', fontSize: '.8rem', textDecoration: 'underline'},
-  post: {backgroundColor: '#fff', fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1px solid rgba(0,0,0,.05)', marginLeft: '5rem'},
+  post: {backgroundColor: '#fff', fontSize: '.9rem', lineHeight: '1.3', borderBottom: '1px solid rgba(0,0,0,.05)', borderLeft: '1px solid rgba(0,0,0,.05)', marginLeft: '8rem'},
   postHov: {padding: '1rem', backgroundColor: '#f9f9f9'},
   hideChildren: {
     cursor: 'pointer'
@@ -45,7 +45,7 @@ export default class Home extends Component {
       let p = this.state.post
       if (p.kids) {
         kids = <span style={this.state.hide ? style.hide : style.show}>{p.kids.slice(0,this.state.limit).map((po, i) => {
-            return <Comment7 key={po} pid={po} i={i+1} />
+            return <Comment10 key={po} pid={po} i={i+1} />
           })}</span>
       }
       post = <span><div style={p.deleted ? style.hide : style.post}>
