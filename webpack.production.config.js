@@ -48,6 +48,12 @@ module.exports = {
     require('postcss'),
     require('autoprefixer')
   ],
+  "resolve": {
+    "alias": {
+      "react": "preact-compat",
+      "react-dom": "preact-compat"
+    }
+  },
   module: {
     loaders: [{
       test: /\.jsx?$/,
