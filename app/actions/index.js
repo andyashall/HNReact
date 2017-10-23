@@ -34,14 +34,14 @@ export const removePost = () => {
 
 export const signIn = (data) => {
 	return {
-	type: 'SAVE_USER',
-	data
+  	type: 'SAVE_USER',
+  	data
 	}
 }
 
 export const signOut = (data) => {
   return {
-  type: 'REMOVE_USER',
-  data
+    type: 'REMOVE_USER',
+    data
   }
 }
