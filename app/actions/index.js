@@ -33,10 +33,10 @@ export const removePost = () => {
 }
 
 export const signIn = (data) => {
-	return {
+  return {
   	type: 'SAVE_USER',
   	data
-	}
+  }
 }
 
 export const signOut = (data) => {
